@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Multimedia Interaktif SPTLDV</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f7fb;--card:#fff;--ink:#12263f;--mut:#4a5d75;--line:#c9d6e4;--ac:#0f9d8a;--acs:rgba(15,157,138,.35);--am:#f2a900;--bad:#d64545;--ok:#1b8a4b;--btn:#12263f;--btnt:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a2b;--card:#16273d;--ink:#eaf2fb;--mut:#a9bbd0;--line:#2e4663;--ac:#3fd1bc;--acs:rgba(63,209,188,.35);--am:#ffc83d;--bad:#ff7a7a;--ok:#5fe08f;--btn:#eaf2fb;--btnt:#0e1a2b}}
+:root[data-theme="dark"]{--bg:#0e1a2b;--card:#16273d;--ink:#eaf2fb;--mut:#a9bbd0;--line:#2e4663;--ac:#3fd1bc;--acs:rgba(63,209,188,.35);--am:#ffc83d;--bad:#ff7a7a;--ok:#5fe08f;--btn:#eaf2fb;--btnt:#0e1a2b}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;font:400 clamp(18px,1.5vw + 12px,26px)/1.6 Lexend,system-ui,"Segoe UI",Arial,sans-serif;color:var(--ink);background-color:var(--bg);background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:32px 32px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+header{padding:20px 16px 8px;max-width:1200px;margin:auto}
+h1{font-size:clamp(28px,4vw,52px);line-height:1.15;margin:0;font-weight:800}
+h2{font-size:clamp(24px,3vw,38px);margin:0 0 12px;font-weight:800}
+h3{font-size:1.1em;margin:18px 0 6px}
+.sub{color:var(--mut);margin:6px 0 0}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--bg);border-bottom:2px solid var(--line);display:flex;gap:8px;overflow-x:auto;padding:10px 12px;margin-top:8px}
+nav button{flex:0 0 auto}
+button{font:inherit;font-weight:600;min-height:58px;padding:10px 22px;border-radius:14px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer}
+button:hover{background:var(--line)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:4px solid var(--am);outline-offset:2px}
+button.on,button.pri{background:var(--btn);color:var(--btnt)}
+button:disabled{opacity:.5;cursor:default}
+main{max-width:1200px;margin:auto;padding:16px}
+section{display:none}section.show{display:block}
+.card{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:20px;margin:0 0 16px}
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))}
+.tag{display:inline-block;background:var(--am);color:#12263f;border-radius:10px;padding:2px 12px;font-weight:600}
+.eq{font-weight:600;background:var(--bg);border-radius:10px;padding:2px 10px;white-space:nowrap}
+table{border-collapse:collapse;width:100%}td,th{border:2px solid var(--line);padding:8px 12px;text-align:left}
+canvas{width:100%;max-width:520px;aspect-ratio:1;border:2px solid var(--line);border-radius:14px;background:var(--card);display:block;touch-action:manipulation}
+.row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+input[type=number],select,textarea{font:inherit;padding:8px 10px;border:2px solid var(--ink);border-radius:10px;background:var(--card);color:var(--ink);min-height:52px}
+input[type=number]{width:96px}
+textarea{width:100%;min-height:110px}
+.opts{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));margin:14px 0}
+.opts button{text-align:left;min-height:72px}
+.opts button.right{background:var(--ok);border-color:var(--ok);color:#fff}
+.opts button.wrong{background:var(--bad);border-color:var(--bad);color:#fff}
+.fb{min-height:1.6em;font-weight:600;margin:6px 0}
+.lv{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px}
+.lv button{min-height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.st{color:var(--am);letter-spacing:2px;font-size:1.1em}
+.bar{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 12px}
+.pill{background:var(--card);border:2px solid var(--line);border-radius:999px;padding:6px 18px;font-weight:600}
+.note{border-left:8px solid var(--ac);padding:6px 14px;background:var(--bg);border-radius:0 12px 12px 0;margin:12px 0}
+footer{text-align:center;color:var(--mut);padding:20px;font-size:.8em}
+@media (prefers-reduced-motion:no-preference){button{transition:background .15s}}
+</style>
+</head>
+<body>
+<header>
+<h1>SPTLDV: Sistem Pertidaksamaan Linear Dua Variabel</h1>
+<p class="sub">Matematika · SMK Kelas X · Multimedia pembelajaran interaktif</p>
+<div class="row" style="margin-top:8px"><button id="themeBtn" aria-label="Ganti tema terang atau gelap">Tema terang/gelap</button></div>
+</header>
+<nav id="nav" aria-label="Menu utama"></nav>
+<main>
+
+<section id="s0" class="show">
+<h2>Identitas Modul</h2>
+<div class="card"><table>
+<tr><th>Mata pelajaran</th><td>Matematika</td></tr>
+<tr><th>Kelas / Fase</th><td>X SMK / Fase E</td></tr>
+<tr><th>Topik</th><td>Sistem Pertidaksamaan Linear Dua Variabel (SPTLDV)</td></tr>
+<tr><th>Alokasi waktu</th><td contenteditable="true">… JP (isi sesuai rencana Bapak/Ibu)</td></tr>
+<tr><th>Penyusun / sekolah</th><td contenteditable="true">Nama guru, nama sekolah</td></tr>
+</table></div>
+<h2>Tujuan Pembelajaran</h2>
+<div class="grid">
+<div class="card"><span class="tag">Tujuan 1</span><p>Peserta didik mampu menentukan dan menggambar daerah penyelesaian sistem pertidaksamaan linear dua variabel pada bidang koordinat dengan benar.</p></div>
+<div class="card"><span class="tag">Tujuan 2</span><p>Peserta didik mampu memodelkan masalah kontekstual dunia kerja, seperti keterbatasan bahan, waktu, dan biaya produksi, ke dalam SPTLDV serta menafsirkan daerah penyelesaian dan nilai optimum sederhana untuk mengambil keputusan.</p></div>
+</div>
+<div class="card"><h3 style="margin-top:0">Alur belajar</h3><p>Materi → Game 10 level → Latihan soal → Refleksi. Pilih menu di bagian atas untuk mulai.</p><button class="pri" onclick="go(1)">Mulai belajar: Materi</button></div>
+</section>
+
+<section id="s1">
+<h2>Materi</h2>
+<div class="card"><h3 style="margin-top:0">1. Pertidaksamaan linear dua variabel</h3>
+<p>Bentuk umum: <span class="eq">ax + by ≤ c</span>, dengan tanda lain yang mungkin: <span class="eq">&lt;</span>, <span class="eq">≥</span>, <span class="eq">&gt;</span>. Variabel x dan y masing-masing berpangkat satu.</p>
+<p>Contoh: <span class="eq">2x + 3y ≤ 12</span>. Pasangan (x, y) yang membuat pernyataan itu benar disebut penyelesaian. Semua penyelesaiannya membentuk <b>daerah penyelesaian</b> pada bidang koordinat.</p></div>
+
+<div class="card"><h3 style="margin-top:0">2. Langkah menggambar daerah penyelesaian</h3>
+<ol>
+<li><b>Ubah tanda menjadi sama dengan</b> untuk mendapat garis batas. Contoh: 2x + 3y = 12.</li>
+<li><b>Cari titik potong sumbu.</b> Jika x = 0 maka y = 4, titik (0, 4). Jika y = 0 maka x = 6, titik (6, 0).</li>
+<li><b>Gambar garis.</b> Garis penuh untuk ≤ dan ≥. Garis putus-putus untuk &lt; dan &gt;.</li>
+<li><b>Uji titik</b>, biasanya (0, 0). Substitusi: 2(0) + 3(0) = 0 ≤ 12 benar, maka daerah yang memuat (0, 0) diarsir.</li>
+</ol>
+<div class="note">Jika garis melewati titik (0, 0), jangan uji (0, 0). Pakai titik lain, misalnya (1, 0) atau (0, 1).</div></div>
+
+<div class="card"><h3 style="margin-top:0">3. Sistem pertidaksamaan</h3>
+<p>Sistem adalah beberapa pertidaksamaan yang berlaku bersamaan. Daerah penyelesaian sistem adalah <b>irisan</b> (bagian yang diarsir oleh semua pertidaksamaan).</p>
+<p>Pada soal produksi, hampir selalu ada syarat <span class="eq">x ≥ 0</span> dan <span class="eq">y ≥ 0</span> karena banyak barang tidak boleh negatif. Daerahnya berada di kuadran I.</p></div>
+
+<div class="card"><h3 style="margin-top:0">4. Coba sendiri: penjelajah daerah penyelesaian</h3>
+<p>Ubah angka, lalu klik atau sentuh bidang untuk menguji sebuah titik. Syarat x ≥ 0 dan y ≥ 0 sudah termasuk.</p>
+<div class="row" id="exCtl"></div>
+<div style="margin-top:12px"><canvas id="exCv" width="520" height="520" aria-label="Bidang koordinat interaktif"></canvas></div>
+<p class="fb" id="exFb">Klik sebuah titik pada bidang.</p></div>
+
+<div class="card"><h3 style="margin-top:0">5. Memodelkan masalah dunia kerja</h3>
+<p><b>Contoh.</b> Bengkel las membuat pagar (x unit) dan teralis (y unit). Pagar butuh 2 jam kerja dan teralis 1 jam. Waktu kerja tersedia paling banyak 40 jam. Bahan besi: pagar 3 batang, teralis 4 batang, tersedia paling banyak 90 batang.</p>
+<table>
+<tr><th></th><th>Pagar (x)</th><th>Teralis (y)</th><th>Tersedia</th></tr>
+<tr><td>Waktu (jam)</td><td>2</td><td>1</td><td>≤ 40</td></tr>
+<tr><td>Besi (batang)</td><td>3</td><td>4</td><td>≤ 90</td></tr></table>
+<p>Model: <span class="eq">2x + y ≤ 40</span>, <span class="eq">3x + 4y ≤ 90</span>, <span class="eq">x ≥ 0</span>, <span class="eq">y ≥ 0</span>.</p>
+<div class="note">Kata kunci: "paling banyak" atau "tidak lebih dari" berarti ≤. "Paling sedikit" atau "minimal" berarti ≥.</div></div>
+
+<div class="card"><h3 style="margin-top:0">6. Nilai optimum sederhana</h3>
+<p>Jika keuntungan <span class="eq">Z = 50x + 40y</span> (ribu rupiah), nilai maksimum atau minimum Z terjadi di salah satu <b>titik sudut</b> daerah penyelesaian.</p>
+<ol>
+<li>Gambar daerah penyelesaian dan tentukan titik sudutnya.</li>
+<li>Substitusikan setiap titik sudut ke Z.</li>
+<li>Pilih nilai terbesar (maksimum) atau terkecil (minimum).</li>
+<li>Tafsirkan dalam kalimat: berapa unit tiap produk dan berapa hasilnya.</li>
+</ol>
+<p><b>Contoh.</b> Daerah: x + y ≤ 8, x ≤ 5, x ≥ 0, y ≥ 0. Titik sudut: (0,0), (5,0), (5,3), (0,8). Dengan Z = 50x + 40y: 0; 250; 370; 320. Maksimum Z = 370 di (5, 3). Keputusan: produksi 5 pagar dan 3 teralis, untung Rp370.000.</p></div>
+<button class="pri" onclick="go(2)">Lanjut ke Contoh Soal</button>
+</section>
+
+<section id="s6">
+<h2>Contoh Soal dan Pembahasan</h2>
+<p class="sub">Tekan tombol Langkah berikutnya. Gambar di sebelah kiri bertambah mengikuti setiap langkah pembahasan.</p>
+<div id="exBox"></div>
+<button class="pri" onclick="go(3)">Lanjut ke Game</button>
+</section>
+
+<section id="s2">
+<h2>Game: Tantangan SPTLDV</h2>
+<div class="bar"><span class="pill" id="gScore">Skor: 0</span><span class="pill" id="gStars">Bintang: 0 / 30</span><button onclick="resetG()">Ulang semua level</button></div>
+<div id="gMap"><p>Pilih level. Setiap level punya 3 kesempatan: benar di percobaan pertama dapat 3 bintang dan 100 poin, kedua 2 bintang dan 70 poin, ketiga 1 bintang dan 40 poin.</p><div class="lv" id="lvGrid"></div></div>
+<div id="gPlay" style="display:none"></div>
+</section>
+
+<section id="s3">
+<h2>Latihan Soal</h2>
+<div class="bar"><span class="pill" id="qScore">Benar: 0 / 6</span><button onclick="renderQ()">Ulang latihan</button></div>
+<div id="qList"></div>
+</section>
+
+<section id="s4">
+<h2>Refleksi</h2>
+<div class="card"><p>Pilih jawaban yang paling sesuai dengan dirimu.</p>
+<p>Saya bisa menggambar daerah penyelesaian satu pertidaksamaan:</p>
+<select id="r1"><option>Belum bisa</option><option>Masih dibantu</option><option>Bisa</option><option>Bisa dan bisa mengajari teman</option></select>
+<p>Saya bisa menggambar daerah penyelesaian sebuah sistem:</p>
+<select id="r2"><option>Belum bisa</option><option>Masih dibantu</option><option>Bisa</option><option>Bisa dan bisa mengajari teman</option></select>
+<p>Saya bisa mengubah soal cerita dunia kerja menjadi model matematika:</p>
+<select id="r3"><option>Belum bisa</option><option>Masih dibantu</option><option>Bisa</option><option>Bisa dan bisa mengajari teman</option></select>
+<p>Saya bisa menentukan nilai optimum dan mengambil keputusan:</p>
+<select id="r4"><option>Belum bisa</option><option>Masih dibantu</option><option>Bisa</option><option>Bisa dan bisa mengajari teman</option></select>
+<p>Bagian yang paling sulit bagi saya:</p><textarea id="r5" placeholder="Tulis di sini"></textarea>
+<p>Satu hal yang akan saya lakukan agar lebih paham:</p><textarea id="r6" placeholder="Tulis di sini"></textarea>
+<p><button class="pri" onclick="refl()">Lihat ringkasan refleksi</button></p><div class="note" id="rOut" style="display:none"></div></div>
+</section>
+
+<section id="s5">
+<h2>Pengembang</h2>
+<div class="card"><table>
+<tr><th>Pengembang</th><td contenteditable="true">Nama guru</td></tr>
+<tr><th>Sekolah</th><td contenteditable="true">Nama SMK</td></tr>
+<tr><th>Mata pelajaran</th><td>Matematika Kelas X</td></tr>
+<tr><th>Tahun</th><td contenteditable="true">2026</td></tr>
+</table>
+<p class="sub">Klik pada isian tabel untuk mengubah nama sebelum ditampilkan di papan interaktif.</p></div>
+</section>
+</main>
+<footer>Multimedia SPTLDV · Matematika SMK Kelas X</footer>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+var TABS=["Beranda","Materi","Contoh Soal","Game","Latihan","Refleksi","Pengembang"],SECS=["s0","s1","s6","s2","s3","s4","s5"],EXR=[];
+function go(n){TABS.forEach(function(_,i){$(SECS[i]).classList.toggle("show",i===n);nb[i].classList.toggle("on",i===n)});window.scrollTo(0,0)}
+var nb=[];TABS.forEach(function(t,i){var b=document.createElement("button");b.textContent=t;b.onclick=function(){go(i)};$("nav").appendChild(b);nb.push(b)});nb[0].classList.add("on");
+$("themeBtn").onclick=function(){var r=document.documentElement,d=r.getAttribute("data-theme");var dark=d?d==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.setAttribute("data-theme",dark?"light":"dark");drawEx();EXR.forEach(function(f){f()})};
+
+/* ===== Menggambar ===== */
+var MAX=10;
+function css(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()}
+function ok(c,x,y){var v=c[0]*x+c[1]*y;return c[2]==="<="?v<=c[3]+1e-9:v>=c[3]-1e-9}
+function draw(cv,cons,pt,o){o=o||{};var sh=o.shade||cons;
+ var g=cv.getContext("2d"),W=cv.width,m=36,S=(W-m*2)/MAX;
+ function X(x){return m+x*S}function Y(y){return W-m-y*S}
+ g.clearRect(0,0,W,W);g.fillStyle=css("--card");g.fillRect(0,0,W,W);
+ g.fillStyle=css("--ac");g.globalAlpha=.35;
+ for(var i=0;i<MAX*10;i++)for(var j=0;j<MAX*10;j++){var x=(i+.5)/10,y=(j+.5)/10;if(sh.length&&sh.every(function(c){return ok(c,x,y)}))g.fillRect(X(i/10),Y((j+1)/10),S/10+.5,S/10+.5)}
+ g.globalAlpha=1;g.strokeStyle=css("--line");g.lineWidth=1;g.fillStyle=css("--mut");g.font="bold 16px Lexend,sans-serif";g.textAlign="center";
+ for(var k=0;k<=MAX;k++){g.beginPath();g.moveTo(X(k),Y(0));g.lineTo(X(k),Y(MAX));g.moveTo(X(0),Y(k));g.lineTo(X(MAX),Y(k));g.stroke();if(k>0){g.fillText(k,X(k),Y(0)+20);g.fillText(k,X(0)-16,Y(k)+5)}}
+ g.strokeStyle=css("--ink");g.lineWidth=3;g.beginPath();g.moveTo(X(0),Y(0));g.lineTo(X(MAX),Y(0));g.moveTo(X(0),Y(0));g.lineTo(X(0),Y(MAX));g.stroke();
+ g.fillText("x",X(MAX)-6,Y(0)+20);g.fillText("y",X(0)-16,Y(MAX)+4);
+ var cols=["#e0503c","#2f6fe0","#c27c00","#8a44c8","#0a8a5a"];
+ (o.lines||cons).forEach(function(c,n){var a=c[0],b=c[1],d=c[3],p=[];
+  if(a===0&&b===0)return;
+  if(b===0){p=[[d/a,0],[d/a,MAX]]}else if(a===0){p=[[0,d/b],[MAX,d/b]]}else{p=[[0,d/b],[MAX,(d-a*MAX)/b]]}
+  g.strokeStyle=cols[n%5];g.lineWidth=3;g.beginPath();g.moveTo(X(p[0][0]),Y(p[0][1]));g.lineTo(X(p[1][0]),Y(p[1][1]));g.stroke()});
+ (o.pts||[]).forEach(function(q){g.fillStyle=css("--am");g.beginPath();g.arc(X(q[0]),Y(q[1]),9,0,7);g.fill();g.strokeStyle=css("--ink");g.lineWidth=2;g.stroke();g.fillStyle=css("--ink");g.font="bold 17px Lexend,sans-serif";g.textAlign="left";g.fillText(q[2]||"",X(q[0])+12,Y(q[1])-10)});
+ if(pt){g.fillStyle=cons.every(function(c){return ok(c,pt[0],pt[1])})?css("--ok"):css("--bad");g.beginPath();g.arc(X(pt[0]),Y(pt[1]),9,0,7);g.fill();g.strokeStyle="#fff";g.lineWidth=2;g.stroke()}
+}
+function consText(c){return c[0]+"x + "+c[1]+"y "+(c[2]==="<="?"≤":"≥")+" "+c[3]}
+
+/* ===== Penjelajah ===== */
+var ex=[[2,3,"<=",12],[1,-1,"<=",2]],exPt=null;
+function exUI(){var h="";ex.forEach(function(c,i){h+='<span class="card" style="margin:0;padding:10px"><input type="number" aria-label="a" value="'+c[0]+'" data-i="'+i+'" data-k="0">x + <input type="number" aria-label="b" value="'+c[1]+'" data-i="'+i+'" data-k="1">y <select data-i="'+i+'" data-k="2"><option value="<="'+(c[2]==="<="?" selected":"")+'>≤</option><option value=">="'+(c[2]===">="?" selected":"")+'>≥</option></select> <input type="number" aria-label="c" value="'+c[3]+'" data-i="'+i+'" data-k="3"></span>'});$("exCtl").innerHTML=h;
+ $("exCtl").querySelectorAll("input,select").forEach(function(e){e.onchange=function(){var i=+e.dataset.i,k=+e.dataset.k;ex[i][k]=k===2?e.value:(+e.value||0);exPt=null;drawEx()}})}
+function drawEx(){draw($("exCv"),ex.concat([[1,0,">=",0],[0,1,">=",0]]),exPt)}
+$("exCv").addEventListener("click",function(e){var r=this.getBoundingClientRect(),W=this.width,m=36,S=(W-m*2)/MAX,px=(e.clientX-r.left)*W/r.width,py=(e.clientY-r.top)*W/r.height;
+ var x=Math.round((px-m)/S*2)/2,y=Math.round((W-m-py)/S*2)/2;if(x<0||y<0||x>MAX||y>MAX)return;exPt=[x,y];drawEx();
+ var res=ex.map(function(c){return consText(c)+": "+(ok(c,x,y)?"benar":"salah")});var all=ex.every(function(c){return ok(c,x,y)});
+ $("exFb").textContent="Titik ("+x+", "+y+") "+(all?"termasuk":"tidak termasuk")+" daerah penyelesaian. "+res.join("; ")+"."});
+exUI();drawEx();
+
+/* ===== Contoh soal bertahap ===== */
+var X0=[1,0,">=",0],Y0=[0,1,">=",0],A=[1,1,"<=",6],B=[2,1,"<=",8],W=[3,2,"<=",18],K=[2,1,"<=",10];
+var EX=[
+{tag:"Tujuan 1",t:"Contoh 1: Menggambar daerah penyelesaian sistem",p:"Gambarlah daerah penyelesaian sistem: x + y ≤ 6, 2x + y ≤ 8, x ≥ 0, y ≥ 0.",s:[
+{h:"Siapkan bidang koordinat",x:"Karena x ≥ 0 dan y ≥ 0, kita memakai kuadran I saja. Ubah tanda ≤ menjadi = untuk mendapat garis batas: x + y = 6 dan 2x + y = 8."},
+{h:"Gambar garis x + y = 6",x:"Jika x = 0 maka y = 6, titik (0, 6). Jika y = 0 maka x = 6, titik (6, 0). Hubungkan dengan garis penuh karena tandanya ≤.",l:[A],p:[[6,0,"(6, 0)"],[0,6,"(0, 6)"]]},
+{h:"Gambar garis 2x + y = 8",x:"Jika x = 0 maka y = 8, titik (0, 8). Jika y = 0 maka 2x = 8 sehingga x = 4, titik (4, 0). Gambar garis kedua.",l:[A,B],p:[[6,0,"(6, 0)"],[0,6,"(0, 6)"],[4,0,"(4, 0)"],[0,8,"(0, 8)"]]},
+{h:"Uji titik (0, 0) pada x + y ≤ 6",x:"0 + 0 = 0 ≤ 6 benar. Jadi arsir sisi garis yang memuat (0, 0), yaitu sisi bawah garis pertama.",l:[A,B],sh:[A],p:[[0,0,"(0, 0)"]]},
+{h:"Uji titik (0, 0) pada 2x + y ≤ 8",x:"0 ≤ 8 benar. Arsir sisi bawah garis kedua. Daerah penyelesaian adalah irisan (bagian yang diarsir kedua pertidaksamaan).",l:[A,B],sh:[A,B],p:[[0,0,"(0, 0)"]]},
+{h:"Tambahkan x ≥ 0, y ≥ 0 dan cari titik sudut",x:"Titik potong kedua garis: kurangkan 2x + y = 8 dengan x + y = 6 diperoleh x = 2, lalu y = 4. Titik sudut daerah penyelesaian: (0, 0), (4, 0), (2, 4), (0, 6).",l:[A,B,X0,Y0],sh:[A,B,X0,Y0],p:[[0,0,"(0, 0)"],[4,0,"(4, 0)"],[2,4,"(2, 4)"],[0,6,"(0, 6)"]]}
+]},
+{tag:"Tujuan 2",t:"Contoh 2: Pemodelan dan nilai optimum",p:"Pengrajin membuat tas (x) dan dompet (y). Satu tas butuh 3 jam kerja dan 2 lembar kulit. Satu dompet butuh 2 jam kerja dan 1 lembar kulit. Waktu kerja paling banyak 18 jam dan kulit paling banyak 10 lembar. Untung tas Rp50.000 dan dompet Rp30.000 per buah. Tentukan rencana produksi dengan untung terbesar.",s:[
+{h:"Tentukan variabel dan baca batasannya",x:"x = banyak tas, y = banyak dompet. Waktu terpakai 3x + 2y dengan tersedia paling banyak 18 jam. Kulit terpakai 2x + y dengan tersedia paling banyak 10 lembar."},
+{h:"Tulis model matematika",x:"3x + 2y ≤ 18, 2x + y ≤ 10, x ≥ 0, y ≥ 0. Fungsi tujuan: Z = 50x + 30y (dalam ribu rupiah)."},
+{h:"Gambar garis 3x + 2y = 18",x:"Jika x = 0 maka y = 9. Jika y = 0 maka x = 6. Titik (0, 9) dan (6, 0).",l:[W],p:[[0,9,"(0, 9)"],[6,0,"(6, 0)"]]},
+{h:"Gambar garis 2x + y = 10",x:"Jika x = 0 maka y = 10. Jika y = 0 maka x = 5. Titik (0, 10) dan (5, 0).",l:[W,K],p:[[0,9,"(0, 9)"],[6,0,"(6, 0)"],[0,10,"(0, 10)"],[5,0,"(5, 0)"]]},
+{h:"Arsir daerah penyelesaian",x:"Uji (0, 0): 0 ≤ 18 dan 0 ≤ 10 benar, maka arsir sisi yang memuat (0, 0) di kuadran I. Titik potong garis: dari 2x + y = 10 didapat y = 10 − 2x. Substitusi ke 3x + 2y = 18: 3x + 20 − 4x = 18 sehingga x = 2 dan y = 6.",l:[W,K,X0,Y0],sh:[W,K,X0,Y0],p:[[2,6,"(2, 6)"]]},
+{h:"Uji titik sudut pada Z = 50x + 30y",x:"Titik sudut: (0, 0), (5, 0), (2, 6), (0, 9). Z(0,0) = 0. Z(5,0) = 250. Z(2,6) = 100 + 180 = 280. Z(0,9) = 270.",l:[W,K,X0,Y0],sh:[W,K,X0,Y0],p:[[0,0,"Z=0"],[5,0,"Z=250"],[2,6,"Z=280"],[0,9,"Z=270"]]},
+{h:"Tafsirkan dan ambil keputusan",x:"Nilai maksimum Z = 280 di titik (2, 6). Keputusan: produksi 2 tas dan 6 dompet agar untung terbesar, yaitu Rp280.000. Pengecekan: waktu 6 + 12 = 18 jam dan kulit 4 + 6 = 10 lembar, keduanya terpakai habis.",l:[W,K,X0,Y0],sh:[W,K,X0,Y0],p:[[2,6,"Optimum"]]}
+]},
+{tag:"Tujuan 2",t:"Contoh 3: Menafsirkan daerah penyelesaian",p:"Dengan batasan pada Contoh 2, apakah rencana produksi 3 tas dan 4 dompet, serta 4 tas dan 5 dompet, layak dilakukan?",s:[
+{h:"Ingat arti daerah penyelesaian",x:"Rencana produksi layak jika titiknya berada di dalam atau pada batas daerah penyelesaian.",l:[W,K,X0,Y0],sh:[W,K,X0,Y0]},
+{h:"Uji rencana (3, 4)",x:"3(3) + 2(4) = 17 ≤ 18 benar. 2(3) + 4 = 10 ≤ 10 benar. Titik berada di dalam daerah, jadi rencana layak.",l:[W,K,X0,Y0],sh:[W,K,X0,Y0],p:[[3,4,"Layak"]]},
+{h:"Uji rencana (4, 5)",x:"3(4) + 2(5) = 22 > 18, salah. 2(4) + 5 = 13 > 10, juga salah. Titik berada di luar daerah, jadi rencana tidak layak: waktu kerja melebihi 4 jam dan kulit kurang 3 lembar.",l:[W,K,X0,Y0],sh:[W,K,X0,Y0],p:[[3,4,"Layak"],[4,5,"Tidak layak"]]}
+]}
+];
+(function(){var h="";EX.forEach(function(e,i){h+='<div class="card"><span class="tag">'+e.tag+'</span><h3>'+e.t+'</h3><p>'+e.p+'</p><div class="grid"><div><canvas id="ec'+i+'" width="520" height="520" aria-label="Gambar pembahasan"></canvas></div><div><div class="bar"><span class="pill" id="ep'+i+'"></span></div><div class="note" id="et'+i+'"></div><div class="row"><button id="eb'+i+'">Sebelumnya</button><button class="pri" id="en'+i+'">Langkah berikutnya</button></div></div></div></div>'});$("exBox").innerHTML=h;
+ EX.forEach(function(e,i){var k=0;function r(){var s=e.s[k];$("ep"+i).textContent="Langkah "+(k+1)+" dari "+e.s.length;$("et"+i).innerHTML="<b>"+s.h+"</b><br>"+s.x;draw($("ec"+i),[],null,{lines:s.l||[],shade:s.sh||[],pts:s.p||[]});$("eb"+i).disabled=k===0;$("en"+i).disabled=k===e.s.length-1}
+ $("eb"+i).onclick=function(){k--;r()};$("en"+i).onclick=function(){k++;r()};EXR.push(r);r()})})();
+
+/* ===== Game 10 level ===== */
+var P=function(t){return {pt:t}};
+var LV=[
+ {t:"pt",c:[[1,1,"<=",6]],o:[[2,3],[5,4],[4,4],[7,0]],e:"Uji x + y ≤ 6. Hanya (2, 3) yang jumlahnya 5, sisanya lebih dari 6."},
+ {t:"pt",c:[[2,1,">=",4]],o:[[1,1],[2,1],[0,3],[1,0]],e:"Uji 2x + y ≥ 4. (2, 1) memberi 5, yang lain kurang dari 4."},
+ {t:"pt",c:[[1,1,"<=",7],[1,0,"<=",4]],o:[[5,1],[3,3],[4,4],[6,0]],e:"Harus x + y ≤ 7 dan x ≤ 4. Hanya (3, 3) memenuhi keduanya."},
+ {t:"pt",c:[[1,2,"<=",8],[3,1,"<=",9]],o:[[2,3],[3,3],[1,4],[3,1.5]],e:"(2, 3): 2+6=8 ≤ 8 dan 6+3=9 ≤ 9. Titik lain melanggar salah satu."},
+ {t:"pt",c:[[1,1,">=",3],[1,1,"<=",6],[1,0,">=",1]],o:[[0,4],[2,2],[4,3],[1,1]],e:"Harus 3 ≤ x + y ≤ 6 dan x ≥ 1. Hanya (2, 2) memenuhi."},
+ {t:"mc",q:"Daerah penyelesaian dari x ≥ 0, y ≥ 0, x + y ≤ 5 berbentuk apa?",o:["Segitiga siku-siku","Persegi","Garis lurus","Seluruh bidang"],a:0,c:[[1,0,">=",0],[0,1,">=",0],[1,1,"<=",5]],e:"Batasnya sumbu x, sumbu y, dan garis x + y = 5 dengan titik sudut (0,0), (5,0), (0,5): segitiga siku-siku."},
+ {t:"mc",q:"Bengkel: 1 meja butuh 2 jam, 1 kursi butuh 1 jam. Waktu tersedia paling banyak 40 jam. Model yang benar (x meja, y kursi)?",o:["2x + y ≤ 40","2x + y ≥ 40","x + 2y ≤ 40","2x + y = 4"],a:0,e:"Meja 2 jam dan kursi 1 jam: 2x + y. \"Paling banyak\" berarti ≤ 40."},
+ {t:"mc",q:"Butik: kemeja 2 m kain, celana 3 m kain. Kain tersedia 60 m dan jumlah kemeja minimal 5. Model yang benar (x kemeja, y celana)?",o:["2x + 3y ≤ 60 dan x ≥ 5","2x + 3y ≥ 60 dan x ≤ 5","3x + 2y ≤ 60 dan x ≥ 5","2x + 3y ≤ 60 dan y ≥ 5"],a:0,e:"Kain terpakai 2x + 3y tidak boleh melebihi 60. Kemeja minimal 5 berarti x ≥ 5."},
+ {t:"mc",q:"Daerah: x + y ≤ 10, x ≤ 6, x ≥ 0, y ≥ 0 dengan titik sudut (0,0), (6,0), (6,4), (0,10). Berapa nilai maksimum Z = 3x + 2y?",o:["18","20","26","30"],a:2,c:[[1,1,"<=",10],[1,0,"<=",6],[1,0,">=",0],[0,1,">=",0]],e:"Z di titik sudut: 0, 18, 26, 20. Maksimum 26 di (6, 4)."},
+ {t:"mc",q:"Produksi: 2x + y ≤ 12 dan x + y ≤ 8 (x, y ≥ 0). Keuntungan Z = 40x + 30y (ribu rupiah). Titik sudut: (0,0), (6,0), (4,4), (0,8). Keputusan terbaik?",o:["6 unit x saja, untung Rp240.000","4 unit x dan 4 unit y, untung Rp280.000","8 unit y saja, untung Rp240.000","Tidak produksi, untung Rp0"],a:1,c:[[2,1,"<=",12],[1,1,"<=",8],[1,0,">=",0],[0,1,">=",0]],e:"Z: 0; 240; 280; 240. Maksimum 280 di (4, 4), yaitu Rp280.000."}
+];
+var sv={};try{sv=JSON.parse(localStorage.getItem("sptldv")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("sptldv",JSON.stringify(sv))}catch(e){}}
+function stars(n){return "★".repeat(n)+"☆".repeat(3-n)}
+function tot(){var s=0,b=0;for(var k in sv){s+=sv[k].p;b+=sv[k].s}$("gScore").textContent="Skor: "+s;$("gStars").textContent="Bintang: "+b+" / 30"}
+function map(){var h="";LV.forEach(function(l,i){var r=sv[i];h+='<button onclick="play('+i+')"><b>Level '+(i+1)+'</b><span class="st">'+stars(r?r.s:0)+'</span><small>'+(r?r.p+" poin":(i<5?"Titik":i<7?"Model":i<8?"Model":"Optimum"))+'</small></button>'});$("lvGrid").innerHTML=h;tot();$("gMap").style.display="block";$("gPlay").style.display="none"}
+function resetG(){sv={};save();map()}
+function play(i){
+ var L=LV[i],tr=0,done=false;$("gMap").style.display="none";var p=$("gPlay");p.style.display="block";
+ var q=L.t==="pt"?"Titik manakah yang termasuk daerah penyelesaian sistem berikut?<br>"+L.c.map(function(c){return '<span class="eq">'+consText(c)+'</span>'}).join(" ")+' <span class="eq">x ≥ 0</span> <span class="eq">y ≥ 0</span>':L.q;
+ var opts=L.t==="pt"?L.o.map(function(o){return "("+o[0]+", "+o[1]+")"}):L.o;
+ var ans=L.t==="pt"?L.o.findIndex(function(o){return L.c.every(function(c){return ok(c,o[0],o[1])})&&o[0]>=0&&o[1]>=0}):L.a;
+ p.innerHTML='<div class="bar"><button onclick="map()">Kembali ke peta level</button><span class="pill">Level '+(i+1)+' dari 10</span><span class="pill" id="try">Kesempatan: 3</span></div><div class="card"><h3 style="margin-top:0">Level '+(i+1)+'</h3><p>'+q+'</p><div class="opts" id="op"></div><p class="fb" id="fb"></p><div id="after"></div></div>';
+ var op=$("op");opts.forEach(function(t,k){var b=document.createElement("button");b.textContent=t;b.onclick=function(){if(done)return;
+  if(k===ans){done=true;b.classList.add("right");fin(3-tr,[100,70,40][tr])}
+  else{tr++;b.classList.add("wrong");b.disabled=true;$("try").textContent="Kesempatan: "+(3-tr);if(tr>=3){done=true;op.children[ans].classList.add("right");fin(0,0,1)}else $("fb").textContent="Belum tepat. Coba lagi, periksa dengan substitusi."}};op.appendChild(b)});
+ function fin(s,pt,lost){var old=sv[i];if(!old||pt>old.p)sv[i]={s:s,p:pt};save();
+  $("fb").innerHTML=(lost?"Kesempatan habis. Jawaban benar ditandai hijau. ":"Benar! ")+'<span class="st">'+stars(s)+"</span> +"+pt+" poin";
+  var h='<div class="note">'+L.e+"</div>";
+  if(L.c){h+='<canvas id="gc" width="520" height="520" aria-label="Grafik daerah penyelesaian"></canvas>'}
+  h+='<p class="row">'+(i<9?'<button class="pri" onclick="play('+(i+1)+')">Level berikutnya</button>':'<button class="pri" onclick="map()">Selesai, lihat hasil</button>')+'<button onclick="play('+i+')">Main lagi</button></p>';
+  $("after").innerHTML=h;
+  if(L.c){var cc=L.c.slice();if(L.t==="pt"){cc.push([1,0,">=",0],[0,1,">=",0])}draw($("gc"),cc,L.t==="pt"?L.o[ans]:null)}
+  tot()}
+}
+map();
+
+/* ===== Latihan ===== */
+var Q=[
+ {q:"Titik (1, 2) memenuhi pertidaksamaan …",o:["3x + 2y ≤ 6","3x + 2y ≥ 8","x + y ≥ 5","2x − y ≥ 3"],a:0,e:"3(1) + 2(2) = 7. Hmm, cek ulang: 7 ≤ 6 salah. Maka pilih yang benar: lihat penjelasan di bawah."},
+ {q:"Garis 4x + 2y = 8 memotong sumbu x dan sumbu y di titik …",o:["(2, 0) dan (0, 4)","(4, 0) dan (0, 2)","(8, 0) dan (0, 8)","(2, 0) dan (0, 2)"],a:0,e:"x = 0 → y = 4. y = 0 → x = 2."},
+ {q:"Untuk x + 2y ≤ 6, titik uji (0, 0) menghasilkan …",o:["0 ≤ 6 benar, arsir daerah yang memuat (0, 0)","0 ≤ 6 benar, arsir daerah yang tidak memuat (0, 0)","0 ≥ 6 salah","Tidak bisa diuji"],a:0,e:"Pernyataan benar, jadi daerah yang memuat (0, 0) adalah penyelesaian."},
+ {q:"Kalimat \"waktu kerja paling banyak 48 jam\" dimodelkan dengan …",o:["waktu terpakai ≤ 48","waktu terpakai ≥ 48","waktu terpakai = 48","waktu terpakai < 0"],a:0,e:"Paling banyak berarti tidak melebihi: ≤."},
+ {q:"Daerah penyelesaian memiliki titik sudut (0,0), (4,0), (2,3), (0,5). Maksimum Z = 2x + 3y adalah …",o:["15","13","8","11"],a:1,e:"Z: 0, 8, 13, 15. Hmm, 15 di (0,5) lebih besar dari 13. Periksa: Z(0,5) = 15."},
+ {q:"Hasil uji titik sudut: Rp150.000, Rp210.000, Rp180.000. Keputusan untuk keuntungan terbesar adalah memilih titik sudut dengan …",o:["Rp210.000","Rp150.000","Rp180.000","Rata-rata ketiganya"],a:0,e:"Untuk maksimum, pilih nilai terbesar: Rp210.000."}
+];
+/* perbaikan jawaban agar konsisten: */
+Q[0]={q:"Titik (1, 2) memenuhi pertidaksamaan …",o:["3x + 2y ≤ 6","3x + 2y ≥ 8","x + y ≥ 5","x + 2y ≤ 6"],a:3,e:"x + 2y = 1 + 4 = 5 ≤ 6 benar. Opsi lain: 7 ≤ 6 salah, 7 ≥ 8 salah, 3 ≥ 5 salah."};
+Q[4]={q:"Daerah penyelesaian memiliki titik sudut (0,0), (4,0), (2,3), (0,5). Maksimum Z = 2x + 3y adalah …",o:["8","13","15","11"],a:2,e:"Z: 0, 8, 12, 15. Maksimum 15 di (0, 5). (Z di (2,3) = 4 + 9 = 13.)"};
+Q[4].e="Z di (0,0)=0; (4,0)=8; (2,3)=13; (0,5)=15. Maksimum 15.";
+var qs=0;
+function renderQ(){qs=0;$("qScore").textContent="Benar: 0 / 6";var h="";Q.forEach(function(x,i){h+='<div class="card"><b>Soal '+(i+1)+'.</b> '+x.q+'<div class="opts" data-q="'+i+'">'+x.o.map(function(o,k){return '<button data-k="'+k+'">'+o+'</button>'}).join("")+'</div><p class="fb"></p></div>'});$("qList").innerHTML=h;
+ $("qList").querySelectorAll(".opts").forEach(function(d){var i=+d.dataset.q,dn=false;d.querySelectorAll("button").forEach(function(b){b.onclick=function(){if(dn)return;dn=true;var k=+b.dataset.k,x=Q[i];d.children[x.a].classList.add("right");if(k===x.a){qs++;$("qScore").textContent="Benar: "+qs+" / 6"}else b.classList.add("wrong");d.nextSibling.innerHTML=(k===x.a?"Benar. ":"Belum tepat. ")+x.e}})})}
+renderQ();
+
+/* ===== Refleksi ===== */
+function refl(){var s=0;["r1","r2","r3","r4"].forEach(function(i){s+=$(i).selectedIndex});var m=s>=10?"Hebat! Kamu siap membantu temanmu.":s>=6?"Bagus. Ulangi level game yang masih kurang bintangnya.":"Tidak apa-apa. Baca ulang bagian Materi, lalu coba penjelajah dan game lagi.";
+ var out=$("rOut");out.style.display="block";out.textContent=m+" Bagian tersulit: "+($("r5").value||"(belum diisi)")+". Rencana: "+($("r6").value||"(belum diisi)")+"."}
+</script>
+</body>
+</html>
